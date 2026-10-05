@@ -1,4 +1,4 @@
-<!-- Login-Seite ( /login ) -->
+<!-- Login page ( /login ) -->
 <svelte:head><title>Anmelden – Magic Link</title></svelte:head>
 
 <main class="card">
@@ -11,12 +11,13 @@
   <h1>Anmelden ohne Passwort</h1>
   <p>Gib deine E-Mail-Adresse ein. Wir schicken dir einen Link, mit dem du dich einloggen kannst.</p>
 
-  <!-- Schickt die E-Mail an die Form-Action in +page.server.js (Person A) -->
+  <!-- Sends the email to the form action in +page.server.js -->
   <form method="POST">
     <label for="email">E-Mail-Adresse</label>
     <input type="email" id="email" name="email" placeholder="name@beispiel.at" required autocomplete="email" />
     <button type="submit">Login-Link senden</button>
   </form>
 
+  <!-- Informs the user about the Magic Link's expiration and one-time use -->
   <div class="hint">Der Link ist 15 Minuten gültig und funktioniert nur einmal.</div>
 </main>

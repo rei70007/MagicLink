@@ -1,12 +1,13 @@
-<!-- Startseite ( / ) – zeigt an, ob man eingeloggt ist -->
+<!-- Start page ( / ) – shows whether the user is logged in -->
 <script>
-	// "data.user" kommt aus +layout.server.js (null = nicht eingeloggt)
+	// "data.user" comes from +layout.server.js (null = not logged in)
 	let { data } = $props();
 </script>
 
 <svelte:head><title>Home – Magic Link</title></svelte:head>
 
 {#if data.user}
+	<!-- Content shown when the user is logged in -->
 	<main class="card erfolg">
 		<svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
 			<circle cx="32" cy="32" r="26" fill="none" stroke="#1f7a4d" stroke-width="5" />
@@ -22,6 +23,7 @@
 		</div>
 	</main>
 {:else}
+	<!-- Content shown when the user is not logged in -->
 	<main class="card">
 		<svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
 			<rect x="14" y="28" width="36" height="28" rx="4" fill="none" stroke="#1d2b53" stroke-width="5" />

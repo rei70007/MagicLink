@@ -1,13 +1,15 @@
-<!-- Fehlerseite ( /link-fehler?grund=abgelaufen | benutzt | ungueltig ) -->
+<!-- Error page ( /link-fehler?grund=abgelaufen | benutzt | ungueltig ) -->
 <script>
   import { page } from '$app/state';
 
+  // Contains the different error messages depending on why the Magic Link failed
   const texte = {
     abgelaufen: ['Link abgelaufen', 'Der Link war nur 15 Minuten gültig. Fordere einen neuen Login-Link an.'],
     benutzt: ['Link schon benutzt', 'Jeder Link funktioniert nur einmal. Fordere einen neuen Login-Link an.'],
     ungueltig: ['Link ungültig', 'Diesen Link gibt es nicht. Prüfe, ob du ihn vollständig kopiert hast.']
   };
 
+  // Gets the error reason from the URL and uses "ungueltig" as the default
   let grund = $derived(page.url.searchParams.get('grund') ?? 'ungueltig');
   let eintrag = $derived(texte[grund] ?? texte.ungueltig);
 </script>
@@ -23,5 +25,6 @@
   <h1>{eintrag[0]}</h1>
   <p>{eintrag[1]}</p>
 
+  <!-- Link back to the login page to request a new Magic Link -->
   <a class="button" href="/login">Neuen Link anfordern</a>
 </main>

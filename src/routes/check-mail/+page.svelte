@@ -1,6 +1,7 @@
-<!-- Bestätigungsseite ( /check-mail ) -->
+<!-- Confirmation page ( /check-mail ) -->
 <svelte:head><title>Check deine E-Mails – Magic Link</title></svelte:head>
 
+<!-- Main section with information about the sent Magic Link -->
 <main class="card">
   <svg class="icon" viewBox="0 0 64 64" aria-hidden="true">
     <rect x="6" y="14" width="52" height="36" rx="4" fill="none" stroke="#1d2b53" stroke-width="4" />
@@ -11,8 +12,10 @@
   <h1>Check deine E-Mails</h1>
   <p>Wir haben dir einen Login-Link geschickt. Klick auf den Link in der E-Mail, um dich einzuloggen.</p>
 
+  <!-- Information about the Magic Link expiration time and the spam folder -->
   <div class="hint">Der Link ist 15 Minuten gültig. Keine E-Mail bekommen? Schau im Spam-Ordner nach.</div>
 
+  <!-- Link back to the login page to request a new Magic Link -->
   <p style="margin-top:20px;margin-bottom:0">
     <a class="button secondary" href="/login">Neuen Link anfordern</a>
   </p>

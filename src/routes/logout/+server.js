@@ -1,4 +1,4 @@
-// Logout: Session löschen, Cookie löschen
+// Logout: delete the session and remove the cookie
 import { redirect } from '@sveltejs/kit';
 import { query } from '$lib/db.js';
 import { findeSession } from '$lib/session.js';
@@ -6,15 +6,14 @@ import { findeSession } from '$lib/session.js';
 export async function POST({ cookies }) {
 	const session = await findeSession(cookies);
 
-	// Session in der Datenbank löschen
+	// Delete the active session from the database
 	if (session) {
 		await query('DELETE FROM Session WHERE session_id = ?', [session.session_id]);
 	}
 
-	// Cookie im Browser löschen
+	// Remove the session cookie from the browser
 	cookies.delete('session', { path: '/' });
 
-	// Zurück zur Startseite – jetzt ausgeloggt
+	// Redirect to the homepage after logging out
 	redirect(303, '/');
 }
-	
